@@ -45,11 +45,7 @@ body {
   padding: 0 2rem;
 }
 
-.phone-app-demo {
-  height: 61.8rem;
-  background: url("./images/mobile-app.png") center no-repeat;
-  flex: 1;
-}
+
 
 .form-data {
   width: 100%;
@@ -120,17 +116,7 @@ body {
   right: 0;
 }
 
-.facebook-login {
-  font-size: 1.4rem;
-  font-weight: bold;
-  color: #385185;
-  margin-bottom: 2.5rem;
-}
 
-.facebook-login i {
-  font-size: 2rem;
-  margin-right: .7rem;
-}
 
 .password-reset {
   font-size: 1.2rem;
@@ -152,63 +138,7 @@ body {
   font-weight: bold;
 }
 
-.get-the-app {
-  font-size: 1.4rem;
-  text-align: center;
-}
 
-.get-the-app span {
-  display: block;
-  margin: 2rem 0;
-  color: #262626;
-}
-
-.badges {
-  width: 100%;
-  display: flex;
-  justify-content: center;
-}
-
-.badges img {
-  max-width: 14rem;
-  cursor: pointer;
-}
-
-.badges img:first-child {
-  margin-right: 1rem;
-}
-
-footer {
-  padding: 5rem 0;
-}
-
-footer .container {
-  display: flex;
-  justify-content: space-between;
-  font-weight: bold;
-  text-transform: uppercase;
-  font-size: 1.3rem;
-  margin-top: 0;
-  flex-wrap: wrap;
-}
-
-.footer-nav ul {
-  display: flex;
-  flex-wrap: wrap;
-  list-style: none;
-}
-
-.footer-nav ul li {
-  margin-right: 1.6rem;
-}
-
-.footer-nav ul li a {
-  color: #003569;
-}
-
-.copyright-notice {
-  color: #999999;
-}
 
 /* MEDIA QUERIES */
 
@@ -227,18 +157,7 @@ footer .container {
     padding: 0;
   }
 
-  footer .container {
-    padding: 0 2rem;
-    justify-content: center;
-  }
-
-  .footer-nav ul {
-    justify-content: center;
-  }
-
-  .footer-nav ul li {
-    margin-bottom: 1rem;
-  }
+  
 }
 
 @media (max-width: 450px) {
@@ -249,7 +168,7 @@ footer .container {
   .form-data form {
     background-color: white;
     border: none;
-    /* padding: 0 2rem; */
+  
   }
 
   .sign-up {
@@ -258,7 +177,5 @@ footer .container {
     margin: 4rem 0;
   }
 
-  footer {
-    padding-bottom: 2rem;
-  }
+ 
 }

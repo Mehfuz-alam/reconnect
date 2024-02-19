@@ -13,7 +13,8 @@ from comment.forms import NewCommentForm
 from django.core.paginator import Paginator
 
 from django.db.models import Q
-
+from django.http import HttpResponseForbidden
+# from post.models import Post, Follow, Stream
 
 
 
@@ -50,7 +51,7 @@ def index(request):
         'follow_status': follow_status,
         'profile': profile,
         'all_users': all_users,
-        # 'users_paginator': users_paginator,
+      
     }
     return render(request, 'index.html', context)
 
@@ -138,7 +139,7 @@ def like(request, post_id):
         
     post.likes = current_likes
     post.save()
-  
+    # return HttpResponseRedirect(reverse('post-details', args=[post_id]))
     return HttpResponseRedirect(reverse('post-details', args=[post_id]))
 
 @login_required
@@ -154,3 +155,16 @@ def favourite(request, post_id):
     return HttpResponseRedirect(reverse('post-details', args=[post_id]))
 
 
+@login_required
+def delete_post(request, post_id):
+    post = get_object_or_404(Post, id=post_id)
+
+
+    if post.user == request.user:
+     
+        post.delete()
+      
+        return redirect('index')
+    else:
+   
+        return HttpResponseForbidden("You don't have permission to delete this post.")

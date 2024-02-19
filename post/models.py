@@ -9,7 +9,7 @@ from notification.models import Notification
 
 
 
-
+# uploading user files to a specific directory
 def user_directory_path(instance, filename):
     return 'user_{0}/{1}'.format(instance.user.id, filename)
 
@@ -34,6 +34,7 @@ class Tag(models.Model):
         return super().save(*args, **kwargs)
 
 
+
 class Post(models.Model):
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     picture = models.ImageField(upload_to=user_directory_path, verbose_name="Picture")
@@ -46,8 +47,7 @@ class Post(models.Model):
     def get_absolute_url(self):
         return reverse("post-details", args=[str(self.id)])
 
-    # def __str__(self):
-    #     return str(self.caption)
+  
 
 
 class Likes(models.Model):

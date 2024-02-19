@@ -9,15 +9,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <meta name="author" content="George W. Park">
-    <meta name="description" content="This project demonstrates how CSS grid (with flexbox and float fallback) can be used to re-create the layout of an Instagram profile page.">
+    <meta name="author" content="Mehfuz Alam">
+    <meta name="description" content="This project demonstrates how CSS grid (with flexbox and float fallback) can be used to re-create the layout of an Reconnect profile page.">
 
     <!-- Title -->
-    <title>Instagram Profile Layout</title>
+    <title>Reconnect Profile Layout</title>
 
     <!-- External CSS Files -->
     <link rel="stylesheet" href="{% static 'assets3/css/reset.css' %}">
     <link rel="stylesheet" href="{% static 'assets3/css/styles.css' %}">
+
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
 
@@ -44,9 +45,11 @@
 
                         {% if request.user.is_authenticated and request.user == profile.user %}
                         <a style="text-decoration: none;" href="{% url 'editprofile' %}" class="btn profile-edit-btn">Edit Profile</a>
-                        <a style="text-decoration: none;" href="{% url 'sign-out' %}" class="btn profile-edit-btn">Logout</a>
-                        <button class="btn profile-settings-btn" aria-label="profile settings"><i class="fas fa-cog" aria-hidden="true"></i></button>
-
+                       
+                        <form action="{% url 'sign-out' %}" method="post" style="display: inline;">
+                            {% csrf_token %}
+                            <button type="submit" class="btn profile-edit-btn">Logout</button>
+                        </form>
                         
                         {% endif %}
                         <br><br>
@@ -85,13 +88,13 @@
                     {% endif %}
                     <br><br>
                     <div class="profile-user-settings">
-                        <a  href="{% url 'profile' profile.user %}"  class="btns profiele-edit-btn">Posts</a>
+                        <a  href="{% url 'profile' profile.user %}"  class="btns profiele-edit-btn">Posts</a> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                         {% if request.user == profile.user %}
                         <a  href="{% url 'profilefavourite' profile.user %}"  class="btns profeile-edit-btn">Saved</a>
                         {% endif %}
                     </div>
                 </div>
-
+                
 
                 <div class="profile-stats">
 
