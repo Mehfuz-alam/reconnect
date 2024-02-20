@@ -2,7 +2,7 @@ from django.urls import path,include
 from . import views
 from django.contrib.auth import views as auth_views
 from django.urls import reverse_lazy
-from authy.views import UserProfile, EditProfile
+from authy.views import UserProfile, EditProfile,accountcreate
 
 urlpatterns = [
     # Profile Section
@@ -11,6 +11,7 @@ urlpatterns = [
      path('users/', include('django.contrib.auth.urls')),
     # User Authentication
     path('sign-up/', views.register, name="sign-up"),
+    path('accountcreated/', views.accountcreate, name="accountcreate"),
     path('sign-in/', auth_views.LoginView.as_view(template_name="sign-in.html", redirect_authenticated_user=True), name='sign-in'),
     path('sign-out/', auth_views.LogoutView.as_view(template_name="sign-out.html"), name='sign-out'), 
     # Other URLs

@@ -1,12 +1,23 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'assets2/style.css' %}">
     <title>Document</title>
+    <style>
+        P {
+            font-family: Arial, sans-serif; /* Choose a nice font */
+            font-size: 16px; /* Choose a suitable font size */
+        }
+    </style>
 </head>
 <body>
-    <b> <i>Congratulations ! Your account has been created.</i></b>
+    <div id="wrapper">
+        <div class="container">
+            <div class="form-data">
+    <b> <i><p>Congratulations ! Your account has been created.</p></i></b>
     <br><br>
     <button >
 
@@ -15,5 +26,8 @@
         </a>
 
     </button>
+</div>
+</div>
+</div>
 </body>
 </html>

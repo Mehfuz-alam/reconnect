@@ -8,6 +8,7 @@ from django.contrib.auth.models import User
 from django.core.exceptions import ObjectDoesNotExist
 from django.contrib import messages
 from django.contrib.auth import authenticate, login
+from django.http import HttpResponse
 
 
 from post.models import Post, Follow, Stream
@@ -17,6 +18,7 @@ from .forms import EditProfileForm, UserRegisterForm
 from django.urls import resolve
 from comment.models import Comment
 
+@login_required
 def UserProfile(request, username):
     Profile.objects.get_or_create(user=request.user)
     user = get_object_or_404(User, username=username)
@@ -105,8 +107,9 @@ def register(request):
             new_user = form.save()
             # Profile.get_or_create(user=request.user)
             username = form.cleaned_data.get('username')
-            messages.success(request, f'Hurray your account was created!!')
-
+            # messages.success(request, f'Hurray your account was created!!')
+            return redirect('accountcreate')
+        else:
             # Automatically Log In The User
             new_user = authenticate(username=form.cleaned_data['username'],
                                     password=form.cleaned_data['password1'],)
@@ -124,3 +127,8 @@ def register(request):
         'form': form,
     }
     return render(request, 'sign-up.html', context)
+
+
+def accountcreate(request):
+    return render(request,'accountcreate.html')
+    
